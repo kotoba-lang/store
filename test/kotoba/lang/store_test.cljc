@@ -4,7 +4,16 @@
             [kotoba.lang.fs :as fs]
             [kotoba.lang.wit :as wit]))
 
-(defn- byte-arr [coll] (byte-array (map unchecked-byte coll)))
+(defn- byte-arr
+  "A byte value for this store.
+
+  `byte-array` is JVM-only, and it was the single thing keeping this suite
+  from running on ClojureScript. `store/put` routes its value through
+  `kotoba.lang.io`'s buffer seam rather than touching a host array itself, and
+  `kotoba-lang/bytes` already fixes the workspace convention: a byte value is
+  a `vector<int 0..255>`, never a platform byte-array."
+  [coll]
+  (vec coll))
 
 (defn- read-write-policy []
   (-> (wit/policy) (wit/grant "store:read") (wit/grant "store:write")))
@@ -17,7 +26,7 @@
 (deftest put-and-get-roundtrip
   (let [s (store/store (fs/mem-filesystem) (read-write-policy))]
     (store/put s "a" (byte-arr [1 2 3]))
-    (is (= [1 2 3] (map int (seq (store/get s "a")))))))
+    (is (= [1 2 3] (vec (store/get s "a"))))))
 
 (deftest get-missing-is-nil
   (let [s (store/store (fs/mem-filesystem) (read-write-policy))]
