@@ -5,7 +5,26 @@
  ;; capability gating), coll (key/path shaping). A real consumer of those four
  ;; libs (M5 for fs/io/wit/coll). No third-party deps; .cljc.
  ;; See ADR-kotoba-lang-foundational-stdlib.md.
- :deps {io.github.kotoba-lang/fs   {:git/sha "e3a7cd798669a86b1627b827fcf51ff77926947b"}
+ :deps {
+        io.github.kotoba-lang/store-delete
+        {:git/url "https://github.com/kotoba-lang/store-delete.git"
+         :git/sha "89c823d8054a5739e6f6d4fa00ed791ebd50e4fd"}
+        io.github.kotoba-lang/store-exists
+        {:git/url "https://github.com/kotoba-lang/store-exists.git"
+         :git/sha "285a6e1fdd2854b7fc1753c76662c024a18c9459"}
+        io.github.kotoba-lang/store-get
+        {:git/url "https://github.com/kotoba-lang/store-get.git"
+         :git/sha "6cbd63cb9827e9bdea859a87efe171ef74bb7e43"}
+        io.github.kotoba-lang/store-put
+        {:git/url "https://github.com/kotoba-lang/store-put.git"
+         :git/sha "47918b95a9e5613fad6aaec9bc26be9044b579e9"}
+        io.github.kotoba-lang/store-store
+        {:git/url "https://github.com/kotoba-lang/store-store.git"
+         :git/sha "be8d9eaa401df0d522f246773f18dbb89c1adca2"}
+        io.github.kotoba-lang/store-with-policy
+        {:git/url "https://github.com/kotoba-lang/store-with-policy.git"
+         :git/sha "16e336cd13ed483ee759cf3fab73a5c034ce1d60"}
+io.github.kotoba-lang/fs   {:git/sha "e3a7cd798669a86b1627b827fcf51ff77926947b"}
         io.github.kotoba-lang/io   {:git/sha "39cf95c0a0fc2c6e629ad548eb2ec407ee2ae5c8"}
         io.github.kotoba-lang/wit  {:git/sha "5708fb98c9e25f233c5e44afe155328b29982cb2"}
         io.github.kotoba-lang/coll {:git/sha "9740cc2dc43a192077d77374b869a37940c801e4"}}
