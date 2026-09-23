@@ -6,6 +6,10 @@
  ;; libs (M5 for fs/io/wit/coll). No third-party deps; .cljc.
  ;; See ADR-kotoba-lang-foundational-stdlib.md.
  :deps {
+        ;; kotoba.test (clojure.test-compatible surface), not clojure.test --
+        ;; scripts/migrate-clojure-test-to-kotoba-test.cljk. Explicit floor.
+        io.github.kotoba-lang/test {:git/url "https://github.com/kotoba-lang/test.git"
+                                    :git/sha "2ab4885f99fd25552d380d0f6b0b54c5a72eb7ae"}
         io.github.kotoba-lang/store-delete
         {:git/url "https://github.com/kotoba-lang/store-delete.git"
          :git/sha "89c823d8054a5739e6f6d4fa00ed791ebd50e4fd"}
