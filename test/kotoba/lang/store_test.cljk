@@ -1,5 +1,5 @@
 (ns kotoba.lang.store-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [kotoba.lang.store :as store]
             [kotoba.lang.fs :as fs]
             [kotoba.lang.wit :as wit]))
